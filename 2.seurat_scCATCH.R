@@ -1,5 +1,5 @@
 library(Matrix)
-matrix_dir = "/home/hykim/Project/Cancer/Colon/scRNA-seq/FASTQ/count/colon2/outs/filtered_feature_bc_matrix/"
+matrix_dir = "Cancer/Colon/scRNA-seq/count/colon_T/outs/filtered_feature_bc_matrix/"
 barcode.path <- paste0(matrix_dir, "barcodes.tsv.gz")
 features.path <- paste0(matrix_dir, "features.tsv.gz")
 matrix.path <- paste0(matrix_dir, "matrix.mtx.gz")
@@ -18,7 +18,7 @@ library(dplyr)
 library(Seurat)
 
 # import input_data(cellranger count output)
-pbmc.data <- Read10X(data.dir = "/home/hykim/Project/Cancer/Colon/scRNA-seq/FASTQ/count/colon_T/outs/filtered_feature_bc_matrix")
+pbmc.data <- Read10X(data.dir = "/Cancer/Colon/scRNA-seq/count/colon_T/outs/filtered_feature_bc_matrix")
 # setup the seurat object
 pbmc <- CreateSeuratObject(counts = pbmc.data, project = "colon_T")
 #pbmc <- CreateSeuratObject(counts = pbmc.data, project = "colon", min.cells = 3, min.features = 200)
@@ -81,13 +81,6 @@ pbmc <- readRDS('colon_T.final.rds')
 
 library(scCATCH)
 #cluster marker genes identification
-clu_markers <- findmarkergenes(pbmc,
-                                species = 'Human',
-                                cluster = 'All',
-                                match_CellMatch = FALSE,
-                                cell_min_pct = 0.25,
-                                logfc = 0.25,
-                                pvalue = 0.05)
 clu_markers <- findmarkergenes(pbmc,
                                species = 'Human',
                                cluster = 'All',
