@@ -4,8 +4,8 @@ library(Seurat)
 library(cowplot)
 
 ### STEP1. Setup the Seurat objects
-Normal.data <- Read10X(data.dir = "/home/hykim/Project/Cancer/Colon/scRNA-seq/PAIR/colon_N/outs/filtered_feature_bc_matrix")
-Tumor.data <- Read10X(data.dir = "/home/hykim/Project/Cancer/Colon/scRNA-seq/PAIR/colon_T/outs/filtered_feature_bc_matrix")
+Normal.data <- Read10X(data.dir = "/hykim/colon_N/outs/filtered_feature_bc_matrix")
+Tumor.data <- Read10X(data.dir = "/hykim/colon_T/outs/filtered_feature_bc_matrix")
 # Set up control object
 Normal <- CreateSeuratObject(counts = Normal.data, project = "COLON_Normal", min.cells = 5, min.features = 200)
 Normal$stim <- "Normal"
