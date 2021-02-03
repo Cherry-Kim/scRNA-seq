@@ -27,28 +27,9 @@ levels(bpe.clusters) <- pred.bpe$labels
 
 hpca.clusters <- gsub("0","Pre-B_cell_CD34-",hpca.clusters)
 hpca.clusters <- gsub("1|3|7|14","NK_cell",hpca.clusters)
-hpca.clusters <- gsub("2|5","B_cell",hpca.clusters)
-hpca.clusters <- gsub("4|10|11|12|15|21","Epithelial_cells",hpca.clusters)
-hpca.clusters <- gsub("6","Macrophage",hpca.clusters)
-hpca.clusters <- gsub("8","Tissue_stem_cells",hpca.clusters)
-hpca.clusters <- gsub("13|22","Endothelial_cells",hpca.clusters)
-hpca.clusters <- gsub("16","DC",hpca.clusters)
-hpca.clusters <- gsub("17","Smooth_muscle_cells",hpca.clusters)
-hpca.clusters <- gsub("18","HSC_CD34+",hpca.clusters)
-hpca.clusters <- gsub("19","Osteoblasts",hpca.clusters)
-hpca.clusters <- gsub("20","Neurons",hpca.clusters)
-hpca.clusters <- gsub("9","Monocyte",hpca.clusters)
 
 bpe.clusters <- gsub("0","CD4+ T-cells",bpe.clusters)
 bpe.clusters <- gsub("1|3|7|14","CD8+ T-cells",bpe.clusters)
-bpe.clusters <- gsub("2|5","B-cells",bpe.clusters)
-bpe.clusters <- gsub("4|10|11|12|15|21","Epithelial cells",bpe.clusters)
-bpe.clusters <- gsub("6","Macrophages",bpe.clusters)
-bpe.clusters <- gsub("8|17|19","Fibroblasts",bpe.clusters)
-bpe.clusters <- gsub("9|16","Monocytes",bpe.clusters)
-bpe.clusters <- gsub("13|22","Endothelial cells",bpe.clusters)
-bpe.clusters <- gsub("18","HSC",bpe.clusters)
-bpe.clusters <- gsub("20","Astrocytes",bpe.clusters)
 
 seurat_obj[["SingleR.labels"]] <- hpca.clusters
 
