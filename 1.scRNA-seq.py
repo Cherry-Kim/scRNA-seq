@@ -11,10 +11,10 @@ def STEP0_REF(ref):
         os.system('tar -xvzf '+ ref+'.tar.gz')
 
 def STEP1_COUNT(ref):
-	file_list=os.listdir('/home/hykim/Project/Cancer/Colon/scRNA-seq/FASTQ/FASTQ/')
+	file_list=os.listdir('/home/FASTQ/')
 	a=[file for file in file_list if file.endswith('PM-PS')]
 	for i in a:
-       	 os.system('/home/hykim/SC/cellranger-4.0.0/cellranger count --id='+i+' --sample='+i+' --fastqs='+path+i+' --jobmode=local --transcriptome='+ref)
+       	 os.system('/home/cellranger-4.0.0/cellranger count --id='+i+' --sample='+i+' --fastqs='+path+i+' --jobmode=local --transcriptome='+ref)
 
 def MAKE_AGGRINPUT(path):
 	fpout=open("aggr_N.csv","w")
@@ -33,8 +33,8 @@ def MAKE_AGGRINPUT(path):
 	fpout1.close()
 
 def STEP2_AGGR():
-	os.system('/home/hykim/program/cellranger-4.0.0/bin/cellranger aggr --id=colon_N --csv=aggr_N.csv --normalize=mapped')
-	os.system('/home/hykim/program/cellranger-4.0.0/bin/cellranger aggr --id=colon_T --csv=aggr_T.csv --normalize=mapped')
+	os.system('/home/cellranger-4.0.0/bin/cellranger aggr --id=colon_N --csv=aggr_N.csv --normalize=mapped')
+	os.system('/home/cellranger-4.0.0/bin/cellranger aggr --id=colon_T --csv=aggr_T.csv --normalize=mapped')
 
 def STEP3_SEURAT():
 	r.source("2-1.seurat.r")
@@ -47,8 +47,8 @@ def Main():
 Main()
 
 def main2():
-	ref='/home/hykim/SC/refdata-gex-GRCh38-2020-A'
-	path='/home/hykim/Project/Cancer/Colon/scRNA-seq/PAIR/'
+	ref='/home/refdata-gex-GRCh38-2020-A'
+	path='/home/Cancer/Colon/scRNA-seq/'
 	STEP1_COUNT(ref)
 	MAKE_AGGRINPUT(path)
 	STEP2_AGGR()
