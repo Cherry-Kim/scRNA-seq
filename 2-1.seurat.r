@@ -5,7 +5,12 @@ library(cowplot)
 
 ### STEP1. Setup the Seurat objects
 Normal.data <- Read10X(data.dir = "/hykim/colon_N/outs/filtered_feature_bc_matrix")
+#https://satijalab.org/seurat/articles/pbmc3k_tutorial
+#barcodes.tsv  #AAACATACAACCAC-1
+#genes.tsv  #ENSG00000237613 FAM138A
+#matrix.mtx  #32738 2700 2286884
 Tumor.data <- Read10X(data.dir = "/hykim/colon_T/outs/filtered_feature_bc_matrix")
+
 # Set up control object
 Normal <- CreateSeuratObject(counts = Normal.data, project = "COLON_Normal", min.cells = 5, min.features = 200)
 Normal$stim <- "Normal"
