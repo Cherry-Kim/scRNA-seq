@@ -1,3 +1,7 @@
 # scRNA-seq
 
-conda activate scRNA
+sudo vi ~/.bashrc
+source ~/.bashrc
+
+
+conda activate scRNAseq
